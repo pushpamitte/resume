@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mitte Pushpa — Portfolio</title>
+    <meta name="description" content="B.Tech student — Smart Door Lock Arduino project, ISRO certifications, VLSI internship.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Mitte Pushpa — Portfolio">
+    <meta property="og:description" content="B.Tech student — Smart Door Lock Arduino project, ISRO certifications, VLSI internship.">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Shader Web Background -->
+    <script src="https://xemantic.github.io/shader-web-background/dist/shader-web-background.min.js"></script>
+    
+    <!-- Fragment Shader -->
+    <script type="x-shader/x-fragment" id="darkveil">
+        precision mediump float;
+        uniform vec2 uResolution;
+        uniform float uTime;
+        
+        void main() {
+            vec2 uv = gl_FragCoord.xy / uResolution.xy;
+            vec2 p = (2.0 * uv) - 1.0;
+            p.x *= uResolution.x / uResolution.y;
+            
+            float t = uTime * 0.5;
+            float color = 0.0;
+            
+            // Create flowing patterns
+            for(float i = 1.0; i < 4.0; i++) {
+                p.x += 0.6 / i * sin(i * 2.5 * p.y + t);
+                p.y += 0.6 / i * cos(i * 1.5 * p.x + t);
+            }
+            
+            float r = cos(p.x + p.y + 1.0) * 0.5 + 0.5;
+            color = sin(p.x * 10.0 + t) * sin(p.y * 10.0 + t) * 0.5 + 0.5;
+            color *= r;
+            
+            // Add depth with multiple layers
+            vec3 col = vec3(0.1, 0.05, 0.2) + vec3(0.1, 0.05, 0.3) * color;
+            col += vec3(0.05, 0.02, 0.1) * sin(t + p.x * 5.0 + p.y * 5.0);
+            
+            gl_FragColor = vec4(col, 1.0);
+        }
+    </script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-info">
+                    <h1 class="name">Mitte Pushpa</h1>
+                    <div class="contact-info">
+                        <p><strong>Address:</strong> Yemmiganur, Kurnool Dist, Andhra Pradesh</p>
+                        <p><strong>Mobile:</strong> <a href="tel:8464904501">8464904501</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:pushpamitte@gmail.com">pushpamitte@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <a href="cv-pushpa.pdf" class="btn btn-primary" download>Download CV</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav aria-label="Main navigation" class="nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#internships" class="nav-link">Internships</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main id="main" class="main">
+        <div class="container">
+            <!-- About Section -->
+            <section id="about" class="section">
+                <h2 class="section-title">About</h2>
+                <div class="card">
+                    <p>Acquiring practical experience, developing technical skills, and contributing to a team's success.</p>
+                </div>
+            </section>
+            
+            <!-- Education Section -->
+            <section id="education" class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content card">
+                            <h3>B.Tech (Pursuing)</h3>
+                            <p class="institution">St. John's College of Engineering & Technology, Yemmiganur</p>
+                            <p class="period">2022–2026</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content card">
+                            <h3>Intermediate</h3>
+                            <p class="institution">Deeksha Junior College, Yemmiganur</p>
+                            <p class="period">2020–2022</p>
+                            <p class="score">Score: 823</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content card">
+                            <h3>SSC</h3>
+                            <p class="institution">MSZP High School (Girls), Yemmiganur</p>
+                            <p class="period">2019–2020</p>
+                            <p class="score">Score: 566</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Skills Section -->
+            <section id="skills" class="section">
+                <h2 class="section-title">Skills</h2>
+                <div class="skill-chips">
+                    <span class="chip">Java</span>
+                    <span class="chip">Microsoft Office</span>
+                    <span class="chip">Communication Skills</span>
+                </div>
+            </section>
+            
+            <!-- Projects Section -->
+            <section id="projects" class="section">
+                <h2 class="section-title">Projects</h2>
+                <div class="card">
+                    <h3>Smart Door Lock System Using Arduino (Mini project)</h3>
+                    <ul>
+                        <li>Innovation created to eliminate direct contact between user and lock.</li>
+                        <li>Replaces mechanical locks with electronic security and convenience.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Certifications Section -->
+            <section id="certifications" class="section">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certifications-grid">
+                    <div class="cert-card card">
+                        <h3>Space Technology for Disaster Risk Reduction</h3>
+                        <p class="issuer">ISRO</p>
+                        <p class="type">Online</p>
+                    </div>
+                    <div class="cert-card card">
+                        <h3>Remote Sensing and Digital Image Analysis</h3>
+                        <p class="issuer">ISRO</p>
+                        <p class="type">Online</p>
+                    </div>
+                    <div class="cert-card card">
+                        <h3>30-day Masterclass in Full Stack Web Development</h3>
+                        <p class="issuer">Pantech.AI & Warriors Way</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Internships Section -->
+            <section id="internships" class="section">
+                <h2 class="section-title">Internships</h2>
+                <div class="card">
+                    <h3>VLSI Internship</h3>
+                    <p class="company">SkillDzire</p>
+                    <p>Short-term internship in chip design and verification, bridging academia and industry.</p>
+                </div>
+            </section>
+            
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h2 class="section-title">Contact</h2>
+                <div class="card">
+                    <form class="contact-form" aria-label="Contact form">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" disabled title="Demo only">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-contact">
+                    <p><a href="mailto:pushpamitte@gmail.com">pushpamitte@gmail.com</a></p>
+                    <p><a href="tel:8464904501">8464904501</a></p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="#" aria-label="GitHub">GitHub</a>
+                </div>
+            </div>
+            <p class="footer-copyright">&copy; 2024 Mitte Pushpa. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Shader Script -->
+    <script src="shader.js"></script>
+</body>
+</html>
